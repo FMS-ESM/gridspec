@@ -1,0 +1,20 @@
+# template for the Intel fortran compiler version 8
+# typical use with mkmf
+# mkmf -t template.ifc -c"-Duse_libMPI -Duse_netCDF" path_names /usr/local/include
+FFLAGS = -O2 -fdefault-real-8 -fcray-pointer -fno-range-check -I/opt/local/include
+CPPFLAGS =  -I/opt/local/include/openmpi -I/opt/local/include -D__GFORTRAN__ -DTIMING -DSPMD -DUSE_LIMA -DLAND_BND_TRACERS
+FC = gfortran
+LD = gfortran
+LDFLAGS = -L/opt/local/lib -lnetcdf -lnetcdff -lmpi_f77
+CFLAGS = -D__GFORTRAN__ -DTIMING -DSPMD -DUSE_LIMA -DLAND_BND_TRACERS
+
+
+# for mosaic
+NETCDFPATH = /opt/local
+SHAREDIR = $(PWD)/../../shared/mosaic
+COREDIR  = $(PWD)
+TOOLSHAREDIR = $(PWD)/../shared
+CFLAGS = -O2 -fast -I$(TOOLSHAREDIR) -I$(COREDIR) -I$(SHAREDIR) -I${NETCDFPATH}/include -I/usr/include
+LDFLAGS =  -L${NETCDFPATH}/lib -lm -lnetcdf 
+LNFLAGS = -v
+CC      = gcc

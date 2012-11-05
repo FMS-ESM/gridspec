@@ -1,12 +1,6 @@
 # The following three directory may need to set.
-NETCDFPATH = /usr/local/netcdf-3.6.2
-SHAREDIR = $(PWD)/../../shared/mosaic
-COREDIR  = $(PWD)
-TOOLSHAREDIR = $(PWD)/../shared
-CFLAGS = -O2 -fast -I$(TOOLSHAREDIR) -I$(COREDIR) -I$(SHAREDIR) -I${NETCDFPATH}/include -I/usr/include
-LDFLAGS =  -L${NETCDFPATH}/lib -lm -lnetcdf 
-LNFLAGS = -v
-CC      = icc
+include $(PWD)/../../../mkmf/configure.mkmf
+
 
 OBJS = mosaic_util.o mpp.o mpp_domain.o mpp_io.o tool_util.o make_boundary_contact.o  \
        make_xgrid_contact.o  interp.o create_xgrid.o make_mosaic.o
