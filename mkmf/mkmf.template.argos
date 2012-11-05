@@ -6,7 +6,6 @@ CPPFLAGS =  -I/opt/local/include/openmpi -I/opt/local/include -D__GFORTRAN__ -DT
 FC = gfortran
 LD = gfortran
 LDFLAGS = -L/opt/local/lib -lnetcdf -lnetcdff -lmpi_f77
-CFLAGS = -D__GFORTRAN__ -DTIMING -DSPMD -DUSE_LIMA -DLAND_BND_TRACERS
 
 
 # for mosaic
@@ -14,7 +13,7 @@ NETCDFPATH = /opt/local
 SHAREDIR = $(PWD)/../../shared/mosaic
 COREDIR  = $(PWD)
 TOOLSHAREDIR = $(PWD)/../shared
-CFLAGS = -O2 -fast -I$(TOOLSHAREDIR) -I$(COREDIR) -I$(SHAREDIR) -I${NETCDFPATH}/include -I/usr/include
+CFLAGS = -O2 -fast -I$(TOOLSHAREDIR) -I$(COREDIR) -I$(SHAREDIR) -I${NETCDFPATH}/include -I/usr/include -Duse_netCDF
 LDFLAGS =  -L${NETCDFPATH}/lib -lm -lnetcdf 
 LNFLAGS = -v
 CC      = gcc

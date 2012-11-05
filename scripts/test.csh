@@ -2,7 +2,7 @@
 set echo
 
 set tooldir = ${PWD}/../bin
-set datadir = ${PWD}/datadir
+set datadir = ${PWD}/../
 set outdir  = $datadir/output
 set indir   = $datadir/input
 if( ! -e $outdir ) mkdir -p $outdir
@@ -98,10 +98,6 @@ if( $status != 0 ) then
     exit 1
 endif
 
-unset echo
-echo "The remaining tests are not successful because they rely on input files that are not included."
-exit 0
-
 if ( -e $indir/OCCAM_p5degree.nc ) then
 	#make_topog of tripolar grid
 	$tooldir/make_topog --mosaic  tripolar_mosaic.nc --topog_file $indir/OCCAM_p5degree.nc --topog_field TOPO --scale_factor -1 --topog_mosaic tripolar_topog_mosaic
@@ -123,6 +119,10 @@ if( $status != 0 ) then
     echo "ERROR: run failed for make_coupler_mosaic"
     exit 1
 endif
+
+unset echo
+echo "The remaining tests are not successful because they rely on large input files that are not included."
+exit 0
 
 #------------------------------------------------------------------------------------------
 # use fregrid to remap data from C48 onto N45 using first-order conservative interpolation.
