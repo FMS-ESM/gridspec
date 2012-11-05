@@ -23,3 +23,7 @@ src/tools/make_hgrid/make_hgrid
 src/tools/make_mosaic/make_mosaic
 src/tools/make_topog/make_topog
 src/tools/make_vgrid/make_vgrid
+
+bin
+
+datadir
